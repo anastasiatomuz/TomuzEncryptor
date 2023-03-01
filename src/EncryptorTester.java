@@ -124,7 +124,7 @@ public class EncryptorTester {
             System.out.println("EXPECTED: " + expectedEncryptedBlock3);
             System.out.println("  ACTUAL: " + actualEncryptedBlock3);
 */
-
+/*
         // -------------------------------------
         // ---- TEST PART C: encryptMessage ----
         // -------------------------------------
@@ -183,8 +183,8 @@ public class EncryptorTester {
           System.out.println("EXPECTED: " + expectedEncrypted5);
           System.out.println("  ACTUAL: " + actualEncrypted5);
         }
+*/
 
-    /*
         // -------------------------------------
         // ---- TEST PART D: decryptMessage ----
         // -------------------------------------
@@ -242,7 +242,7 @@ public class EncryptorTester {
           System.out.println("EXPECTED: " + expectedDecrypted6);
           System.out.println("  ACTUAL: " + actualDecrypted6);
         }
-    */
+
 
     }
 

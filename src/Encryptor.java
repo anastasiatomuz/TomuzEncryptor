@@ -123,11 +123,33 @@ public class Encryptor {
         int lenOfBlocks = numCols * numRows;
         int numOfBlocks = encryptedMessage.length() / lenOfBlocks;
         for (int times = 0; times < numOfBlocks; times ++){
-            String[][] colMajorArray = new String[numCols][numRows];
             String[][] rowMajorArray = new String[numRows][numCols];
+            //the section of message that will fit in the decryption block
             String tempMessage = encryptedMessage.substring(0,lenOfBlocks);
+            //the rest of the message that will need to be decrypted
             encryptedMessage = encryptedMessage.substring(lenOfBlocks);
-            for (int i = 0; i < lenOfBlocks);
+            //flips message from column-major to row-major array(2D)
+            for (int col = 0; col < numCols; col ++){
+                for (int row = 0; row < numRows; row ++) {
+                    rowMajorArray[row][col] = tempMessage.substring(col * numRows + row, col * numRows + row + 1);
+                }
+            }
+
+            String decryptedTemp = "";
+            //message from row-major array to String
+            for (String[] row : rowMajorArray){
+                for (String letter : row){
+                    decryptedTemp += letter;
+                }
+            }
+            decryptedMessage += decryptedTemp;
         }
+
+        //remove "A" placeholders
+        int ind = decryptedMessage.length();
+        for (int i = decryptedMessage.length() - 1; i >= 0 && decryptedMessage.substring(i, i + 1).equals("A"); i --){
+            decryptedMessage = decryptedMessage.substring(0, i);
+        }
+        return decryptedMessage;
     }
 }
